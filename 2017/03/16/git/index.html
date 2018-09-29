@@ -15,7 +15,7 @@ git不提供Redhat的快捷安装方式，所以按照官网的说法进行源�
 <meta property="og:description" content="git安装由于我的Linux环境是Redhat6-64，在安装git过程中遇到了不少问题。
 git不提供Redhat的快捷安装方式，所以按照官网的说法进行源码编译安装。
 其实Redhat可以通过yum来安装git,不过版本较低时1.7，现在的git已经到了2.9，所以选择了源码安装，由于git依赖的包较多，所以首先需要替换掉原来系统自带的yum,顺便说一句为什么要替换掉，因为自带的yum是需要收费">
-<meta property="og:updated_time" content="2017-03-16T09:36:28.681Z">
+<meta property="og:updated_time" content="2018-09-29T06:56:38.335Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git安装">
 <meta name="twitter:description" content="git安装由于我的Linux环境是Redhat6-64，在安装git过程中遇到了不少问题。
@@ -95,7 +95,7 @@ git不提供Redhat的快捷安装方式，所以按照官网的说法进行源�
 <p>git不提供Redhat的快捷安装方式，所以按照官网的说法进行源码编译安装。</p>
 <p>其实Redhat可以通过yum来安装git,不过版本较低时1.7，现在的git已经到了<br>2.9，所以选择了源码安装，由于git依赖的包较多，所以首先需要替换掉原来<br>系统自带的yum,顺便说一句为什么要替换掉，因为自带的yum是需要收费的。<br>下面来采用centos的yum来替换。</p>
 <p>1 以为我的系统没有注册，允许yum会报错，如下；<br>This system is not registered with RHN.RHN support will be disabled.</p>
-<p>2删掉系统自带的yum<br>rpm -qa|grep yum|xargs rpm -e –nodeps<br>rpm是Linux安装包的一种命令  </p>
+<p>2 删掉系统自带的yum<br>rpm -qa|grep yum|xargs rpm -e –nodeps<br>rpm是Linux安装包的一种命令  </p>
 <p>3 根据系统的版本到<a href="http://mirrors.163.com/centos/" target="_blank" rel="external">http://mirrors.163.com/centos/</a> 找对应系统版本号，我用的是6</p>
 <p>4由于我的系统是64为的，我在此地址下载了3个RPM，<a href="http://mirrors.163.com/centos/6/os/x86_64/Packages/" target="_blank" rel="external">http://mirrors.163.com/centos/6/os/x86_64/Packages/</a><br>yum-3.2.29-73.el6.centos.noarch.rpm<br>yum-metadata-parser-1.1.2-16.el6.x86_64.rpm<br>yum-plugin-fastestmirror-1.1.30-37.el6.noarch.rpm</p>
 <p>5 下载方式可通过<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-3.2.29-73.el6.centos.noarch.rpm</div></pre></td></tr></table></figure></p>
@@ -125,7 +125,7 @@ git不提供Redhat的快捷安装方式，所以按照官网的说法进行源�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/16/git/" data-id="cjmn0d9700001cwo04mdz4tkt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/16/git/" data-id="cjmn33o030001kko0u3o3yzfx" class="article-share-link">Share</a>
       
       
     </footer>

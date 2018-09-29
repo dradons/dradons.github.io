@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -61,10 +61,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-java开始" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-interview" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/03/13/java开始/" class="article-date">
-  <time datetime="2017-03-13T09:05:08.000Z" itemprop="datePublished">2017-03-13</time>
+    <a href="/2018/09/26/interview/" class="article-date">
+  <time datetime="2018-09-26T07:52:21.000Z" itemprop="datePublished">2018-09-26</time>
 </a>
     
   </div>
@@ -75,7 +75,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/13/java开始/">java开始</a>
+      <a class="article-title" href="/2018/09/26/interview/">interview</a>
     </h1>
   
 
@@ -83,13 +83,53 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>git push origin mastergit push origin mastergit push origin mastergit push origin mastergit push origin master<br>git push origin master<br>git push origin mastergitgit push origin master</p>
-<p>git push origin mastergitgit push origin master</p>
+        <h3 id="java基础"><a href="#java基础" class="headerlink" title="java基础"></a>java基础</h3><ol>
+<li>List和Set的区别<br>答：Set：不包含重复元素的Collection。List：有顺序的collection，并且可以包含重复元素</li>
+<li><a href="https://blog.csdn.net/qq_27093465/article/details/52487584" target="_blank" rel="external">HashSet是如何保证不重复的</a><br>HashSet的值是存储在一个HashMap的key里面的，而正好HashMap的key是不能重复的。<br>hashmap里面put的时候，如果put(key,value)的key相同的话，是不是就是把原来的旧值给覆盖啦。</li>
+<li><a href="http://www.importnew.com/21396.html" target="_blank" rel="external">HashMap是线程安全的么</a><br>HashMap是线程不安全的，HashTable是线程安全的，是通过synchronized实现的，所有的线程竞争一把锁，效率自然就低了。ConcurrentHashMap是线程安全的，内部实现了锁分段技术(含了segment数组，将数据分段存储，每个分段分配一把锁)</li>
+<li><a href="https://www.cnblogs.com/KingIceMou/p/6976574.html" target="_blank" rel="external">HashMap的扩容过程</a><br>直接拷贝别的HashMap的形式<br>定义初始容量大小（table数组的大小，缺省值为16），定义负载因子（缺省值为0.75）的形式</li>
+<li><a href="https://blog.csdn.net/xs521860/article/details/59484291" target="_blank" rel="external">HashMap JDK 1.7和1.8 的区别</a><br>1.7位桶+链表    1.8位桶+链表/红黑树，链表长度达到阈值变为红黑树</li>
+<li><a href="http://www.importnew.com/22083.html" target="_blank" rel="external">final、finally、finalize的区别</a><br>final：修饰符，修饰类（不能被继承）、变量（不能改变值）、方法（不能重写)<br>finally: 用在try catch的后面构造总是执行的代码块，JVM不关闭就能执行，通常用于释放资源<br>finalize: Object类中定义的方法，用于垃圾回收</li>
+<li><a href="https://www.cnblogs.com/yw-ah/p/5830458.html" target="_blank" rel="external">强引用、软引用、弱引用、虚引用的区别</a><br>强引用：Object obj = new Object(), obj引用释放后，垃圾回收器才能回收<br>软引用：内存溢出之前进行回收 SoftReference<object> sf = new SoftReference<object>(obj),主要做缓存的功能<br>弱引用：第二次垃圾回收是回收 WeakReference<object> wf = new WeakReference<object>(obj)监控对象是否被垃圾<br>处理器标记为即将垃圾回收<br>虚引用：垃圾回收时回收，无法通过引用取到对象值 PhantomReference<object> pf = new PhantomReference<object>(obj)</object></object></object></object></object></object></li>
+<li>JAVA反射<br>Java反射就是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性；并且能改变它的属性。而这也是Java被视为动态<br>创建对象：a,通过类调用newInstance()，如String.class.newInstance() b,通过类对象的getConstructor()或getDeclaredContructor()获取到构造器，然后调用getInstance() 如：String.class.getConstructor(String.class).newInstance(‘Hello’)<br>可通过getDeclaredField()获取字段对象，然后通过setAccessible(true)访问私有字段</li>
+<li><a href="https://blog.csdn.net/u011410529/article/details/56668545?locationNum=6&amp;fps=1" target="_blank" rel="external">Arrays.sort实现原理</a><br>不论是Collections.sort方法或者是Arrays.sort方法，底层实现都是TimSort实现的，这是jdk1.7新增的，以前是归并排序。TimSort算法就是找到已经排好序数据的子序列，然后对剩余部分排序，然后合并起来</li>
+<li>collection实现原理<br><a href="https://blog.csdn.net/u011240877/article/details/52773577" target="_blank" rel="external">Java 集合深入理解（3）：Collection</a><br>Connection:是一个接口，各种集合的父接口</li>
+<li>LinkedHashMap的应用<br><a href="https://blog.csdn.net/justloveyou_/article/details/62893086" target="_blank" rel="external">彻头彻尾理解 HashMap</a><br><a href="https://blog.csdn.net/justloveyou_/article/details/71713781" target="_blank" rel="external">彻头彻尾理解 LinkedHashMap</a><br><a href="https://blog.csdn.net/column/details/14840.html" target="_blank" rel="external">Java SE进阶之路</a><br>它的内部通过双向链表实现，默认保持key的插入顺序，迭代的时候也是按照顺序迭代，可快速删除</li>
+<li>cloneable接口实现原理<br><a href="https://blog.csdn.net/u013916933/article/details/51590332" target="_blank" rel="external">Cloneable接口源码分析与技术细节</a><br>java开发中的一个常用接口，顾名思义作用就是将一个类的实例拷贝到另一个新的实例中，拷贝又分为深拷贝与浅拷贝。重写Object类中的clone()方法</li>
+<li>异常分类及处理机制<br><a href="https://blog.csdn.net/sinat_36713319/article/details/68945619" target="_blank" rel="external">JAVA中的异常处理机制及异常分类</a><br>Throwable是java中错误和异常的超类，下一层是Error(运行时系统内部错误和资源耗尽错误)和Exception(IOException/RuntimeException)。处理机制：如果程序不能按照正常途径完成任务，就可以通过另一种途径退出方法，在这种情况下会抛出一个封装了错误信息的对象，此时方法退出并没有返回值，其他调用该方法的代码无法继续执行，异常处理机制会交给异常处理器</li>
+<li>wait和sleep的区别<br>wait：线程释放弃对象锁，进入等待此对象的锁等待池，只有持有对象调用notify()后方可进入就绪状态<br>sleep: 休眠指定的时间，让出CPU。线程不会释放对象锁</li>
+<li>数组在内存中如何分配<br>“<a href="https://www.cnblogs.com/chenyaqiang/p/5419493.html" target="_blank" rel="external">数组的引用变量和内存分配</a>“<br>数组也是一个对象，所以创建时会在堆上分配内存空间，然后返回对象的引用。数组只有分配内存空间后才可使用，数组初始化分为动态初始化和静态初始化。数组的引用变量存放在stack中，数组元素存放在heap中<h3 id="Java并发"><a href="#Java并发" class="headerlink" title="Java并发"></a>Java并发</h3></li>
+<li><a href="https://blog.csdn.net/wsyw126/article/details/70807304" target="_blank" rel="external">synchronized 的实现原理及锁优化</a><br>synchronizde底层通过monitor(监视器锁)对象来实现、方法的同步是隐式的方式实现（根据ACC_SYNCHRONIZED标识符，<br>操作monitor)。可以用在普通方法(对象monitor)、静态方法(类的monitor)、代码块(this对象monitor)。内部通过监视器锁<br>来实现同步，这是依赖操作系统底层mutex_lock来实现的，我们称为重量级锁。JDK1.6后为了提高性能引入了“轻量级锁”、<br>“偏向锁”。引入的本意是在没有多线程竞争的情况下，减少性能消耗。轻量级锁应用于线程交替执行同步块的情况，如果同一<br>时间访问同一锁的情况，就会导致锁膨胀为重量级锁。偏向锁为了解决无多线程竞争的情况下减少不必要轻量级锁的执行路径</li>
+<li>[volatile]的实现原理(<a href="http://www.importnew.com/23520.html" target="_blank" rel="external">http://www.importnew.com/23520.html</a>)<br>volatile是轻量级的sychronized，能减少线程上下文的切换和调度。用于多线程访问共享变量，线程通过排他锁获取变量，多个线程能获取最新的共享变量。底层通过内存屏障来实现。原子性、可见性、有序性、指令重排序、happens-before，对volatile变量的写操作happens-before后续的读操作，在写操作不依赖当前值并该变量不包含在其他变量的不变式中的条件满足才可以使用volatile</li>
+<li><a href="">java信号灯？</a><br>Semaphore用于创建线程池，保持有限个线程并发执行。Semaphore通常用于有限访问资源的线程数目，她是一个计数信号量，记录了一个许可集合。与传统的互斥锁相比，最大的不同就是释放的时候并不需要拥有锁对象释放，也可由其他对象释放，信号没有所有权的概念</li>
+<li>synchronized在静态方法和普通方法的区别<br>对象的监视锁与类的监视锁</li>
+<li><a href="https://blog.csdn.net/jiyiqinlovexx/article/details/51236323" target="_blank" rel="external">怎么实现所有线程在等待某个事件触发后才执行</a><br>1.闭锁CountDownLatch闭锁是典型的等待事件发生的同步工具类，将闭锁的初始值设置1，所有线程调用await方法等待，当事件发生时调用countDown将闭锁值减为0，则所有await等待闭锁的线程得以继续执行。<br>2.阻塞队列BlockingQueue所有等待事件的线程尝试从空的阻塞队列获取元素，将阻塞，当事件发生时，向阻塞队列中同时放入N个元素(N的值与等待的线程数相同)，则所有等待的线程从阻塞队列中取出元素后得以继续执行。<br>3.信号量Semaphore设置信号量的初始值为等待的线程数N，一开始将信号量申请完，让剩余的信号量为0，待事件发生时，同时释放N个占用的信号量，则等待信号量的所有线程将获取信号量得以继续执行。<br>4.刚开始主线程先获取写锁，然后所有子线程获取读锁，然后等事件发生时主线程释放写锁</li>
+<li>什么是CAS？有什么缺陷，<a href="http://www.mamicode.com/info-detail-2355996.html" target="_blank" rel="external">如何解决</a><br>CAS机制设置了3个基本操作数： 内存地址V、旧的预期值A、要修改的新值B<br>缺点：1CPU开销大，并发量高的情况下，多线程尝试更新某一个变量，确不成功，反复执行给CPU带来压力 2 不能保证代码的<br>原子性，CAS只保证一个变量的原子操作，而不能保证代码块的原子操作，比如3个变量共同进行原子操作 3  ABA问题，在某些算法中，如果V的值首先由A变成B，再由B变成A,那么CAS将会操作成功。ABA问题的解决思路就是使用版本号。在变量前面追加上版本号，每次变量更新的时候把版本号加一，那么A－B－A 就会变成1A-2B－3A。</li>
+<li><a href="https://blog.csdn.net/u012403290/article/details/64910926?locationNum=11&amp;fps=1" target="_blank" rel="external">synchronized和lock有什么区别</a><br>存在层次：java的关键字，在JVM层面上；是一个类<br>锁的释放：1 获取锁的线程执行完代码块后释放锁 2 线程执行异常JVM让线程释放；在finally中必须释放，不如容易死锁<br>锁的获取： 假设A获得锁，B线程等待，如果A阻塞，B一直等待；尝试获得锁，线程可以不用一直等待<br>锁状态： 无法判断；可以判断<br>锁类型：可重入不可中断非公平；可重入、可中断、可公平<br>性能： 少量同步；大量同步</li>
+<li><a href="https://www.cnblogs.com/wang-meng/p/5808006.html" target="_blank" rel="external">Hashtable是如何加锁的</a><br>HashTable容器使用synchronized来保证线程安全</li>
+<li>HashMap的并发问题<br>HashMap是非线程安全的</li>
+<li>ConcurrentHashMap介绍？<a href="http://www.importnew.com/23610.html" target="_blank" rel="external">1.8中为什么要用红黑树</a><br>ConcurrentHashMap同步机制通过Lock实现，是线程安全的。ConcurrentHashMap基于concurrentLevel划分出了多个Segment来对key-value进行存储，从而避免每次锁定整个数组，在默认的情况下，允许16个线程并发无阻塞的操作集合对象，尽可能地减少并发时的阻塞现象。</li>
+<li><a href="https://www.cnblogs.com/waterystone/p/4920797.html" target="_blank" rel="external">AQS</a><br>AbstractQueuedSynchronizer类如其名，抽象的队列式的同步器，AQS定义了一套多线程访问共享资源的同步器框架，许多同步类实现都依赖于它，如常用的ReentrantLock/Semaphore/CountDownLatch…。独占和共享两种模式下获取-释放资源,<br>AQS也支持响应中断的</li>
+<li>如何检测死锁？怎么预防<a href="https://blog.csdn.net/yyf_it/article/details/52412071" target="_blank" rel="external">死锁？</a><br>监测死锁： 首先为每个进程和每个资源指定一个唯一的号码，然后建立资源分配表和进程等待表<br>预防死锁： 资源一次性分配、可剥夺资源、资源有序分配</li>
+<li><a href="https://blog.csdn.net/javazejian/article/details/72772461" target="_blank" rel="external">Java内存模型</a><br>java内存模型中规定了所有的变量都存在主内存中，每条线程有自己的工作内存，线程对变量的多有操作都必须在工作内存中进行，不能直接读写主内存的变量。不同线程之间无法访问对方的工作内存，线程间变量的传递通过主内存完成。</li>
+<li>如何保证多线程下 i++的正确性<br>1 循环CAS，实现i++原子操作 (AtomicInteger)2 使用锁机制 3 使用sychronized</li>
+<li><a href="https://www.cnblogs.com/sachen/p/7401959.html" target="_blank" rel="external">线程池的种类、区别和使用场景</a><br>newCachedThreadPool、newFixedThreadPool、newSingleThreadPool、newScheduledThreadPool</li>
+<li><a href="https://blog.csdn.net/aiengelangte/article/details/80397952" target="_blank" rel="external">分析线程池的实现原理和线程的调度过程</a><br>线程的生命周期New、Runnable、Running、Blocked、Dead。线程的复用就是要保持线程的存活状态(Runnable、Running、<br>Blocked)、控制最大并发数、管理线程</li>
+<li><a href="https://blog.csdn.net/aiengelangte/article/details/80397952" target="_blank" rel="external">线程池如何调优，最大数目如何确认？</a><br>根据任务类型配置线程池的大小：CPU紧密型任务，参考值N(cpu)+1;IO紧密型任务,2*N(cpu)</li>
+<li><a href="https://www.jianshu.com/p/98b68c97df9b" target="_blank" rel="external">ThreadLocal原理，使用的时候需要注意什么</a><br>本地线程副本变量工具类。ThreadLocal只能保存一个变量副本，如果需要多个副本就需要创建多个ThreadLocal,<br>ThreadLocal内部的ThreadLocalMap的key为弱引用，会存在内存泄漏风险(调用ThreadLocal的get()、set()方法时完成后再调用remove方法，将Entry节点和Map的引用关系移除)、适用于无状态，副本变量独立后不影响业务逻辑的高并发场景</li>
+<li><a href="https://blog.csdn.net/zzti_erlie/article/details/80358564" target="_blank" rel="external">Condition接口实现原理</a><br>Condition的大概实现，AbstractQueuedSynchronizer内部维护着一个同步队列（双向链表实现），多个条件队列（单向链表实现），条件队列由AbstractQueuedSynchronizer的内部类ConditionObject来维护，new一个ConditonObject ，则多一个条件队列，当一个线程执行await方法是，会把当线程包装成一个Node节点，放到执行await方法的ConditionObject的条件队列中，释放锁并被阻塞，当执行signal方式时，会把条件队列的第一个节点移除，并转移到同步队列中，获取到锁即可继续执行</li>
+<li><a href="http://guochenglai.com/2016/06/04/java-concurrent4-java-subsection-decompose/" target="_blank" rel="external">分段锁的原理，锁力度减小的思考</a><br>锁粒度细分 ：锁分解(缩小锁范围、减少锁的粒度)，锁分段(一组独立的对象，ConcurrentHashMap，首先将数据分成一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据的时候，其他段的数据也能被其他线程访问)</li>
+<li><a href="http://ifeve.com/java-blocking-queue/" target="_blank" rel="external">八种阻塞队列及各个阻塞队列的特性</a><br>ArrayBlockingQueue ：一个由数组结构组成的有界阻塞队列。<br>LinkedBlockingQueue ：一个由链表结构组成的有界阻塞队列。<br>PriorityBlockingQueue ：一个支持优先级排序的无界阻塞队列。<br>DelayQueue：一个使用优先级队列实现的无界阻塞队列。<br>SynchronousQueue：一个不存储元素的阻塞队列。<br>LinkedTransferQueue：一个由链表结构组成的无界阻塞队列。<br>LinkedBlockingDeque：一个由链表结构组成的双向阻塞队列。<h3 id="Spring相关"><a href="#Spring相关" class="headerlink" title="Spring相关"></a>Spring相关</h3></li>
+<li><a href="https://www.cnblogs.com/aspirant/p/9082858.html" target="_blank" rel="external">BeanFactory和FactoryBean的区别</a><br>BeanFactory是个Factory，也就是IOC容器或对象工厂，FactoryBean是个Bean。在Spring中，所有的Bean都是由BeanFactory(也就是IOC容器)来进行管理的。但对FactoryBean而言，这个Bean不是简单的Bean，而是一个能生产或者修饰对象生成的工厂Bean,它的实现与设计模式中的工厂模式和修饰器模式类似 </li>
+<li><a href="https://www.cnblogs.com/chenjunjie12321/p/6124649.html" target="_blank" rel="external">Spring IOC的理解及初始化过程</a><br>IoC文英全称Inversion of Control，即控制反转，我么可以这么理解IoC容器：“把某些业务对象的的控制权交给一个平台或者框架来同一管理，这个同一管理的平台可以称为IoC容器。”<br>（1）定位并获取资源文件(2)通过返回的resource对象进行BeanDefinition的载入(3)将BeanDefiniton注册到容器中</li>
+<li><a href="https://www.cnblogs.com/wnlja/p/3907836.html" target="_blank" rel="external">BeanFactory和ApplicationContext的区别和联系</a><br>BeanFacotry延迟加载，第一次调用getBean方法才会抛出异常，而ApplicationContext则初始化后自检；都支持<br>BeanPostProcessor、BeanFactoryPostProcessor的使用，前者需要手动注册、而后者自动注册</li>
+<li>Springbean的生命周期，如何被管理的<br><img src="https://upload-images.jianshu.io/upload_images/44770-f312de031566217d.png?imageMogr2/auto-orient/" alt="Springbean的生命周期"><br>1实例化一个Bean，也就是我们通常说的new<br>2按照Spring上下文对实例化的Bean进行配置，也就是IOC注入<br>3如果这个Bean实现了BeanNameAware接口，会调用它实现的setBeanName(String beanId)方法，此处传递的是Spring配置文件中Bean的ID<br>4 如果这个Bean实现了BeanFactoryAware接口，会调用它实现的setBeanFactory()，传递的是Spring工厂本身（可以用这个方法获取到其他Bean）<br>5 如果这个Bean实现了ApplicationContextAware接口，会调用setApplicationContext(ApplicationContext)方法，传入Spring上下文，该方式同样可以实现步骤4，但比4更好，以为ApplicationContext是BeanFactory的子接口，有更多的实现方法<br>6如果这个Bean关联了BeanPostProcessor接口，将会调用postProcessBeforeInitialization(Object obj, String s)方法，BeanPostProcessor经常被用作是Bean内容的更改，并且由于这个是在Bean初始化结束时调用After方法，也可用于内存或缓存技术<br>7 如果这个Bean在Spring配置文件中配置了init-method属性会自动调用其配置的初始化方法<br>8如果这个Bean关联了BeanPostProcessor接口，将会调用postAfterInitialization(Object obj, String s)方法<br>注意：以上工作完成以后就可以用这个Bean了，那这个Bean是一个single的，所以一般情况下我们调用同一个ID的Bean会是在内容地址相同的实例<br>9 当Bean不再需要时，会经过清理阶段，如果Bean实现了DisposableBean接口，会调用其实现的destroy方法<br>10最后，如果这个Bean的Spring配置中配置了destroy-method属性，会自动调用其配置的销毁方法<br>41)    Springbean的加载过程<br>42)    SpringAOP要是自己实现该如何实现<br>43)    SpringIOC要是自己实现该如何实现<br>44)    Spring是如何管理事务的，事务管理机制<br>45)    Spring不同事务传播行为有哪些，有什么用<br>46)    Spring中用到了哪些设计模式<br>47)    SpringMVC工作原理<br>48)    Spring循环注入的原理<br>49)    Springaop的理解，各个术语相互直接是怎么工作的<br>50)    Spring如何保证controller并发的安全性<h3 id="Netty相关"><a href="#Netty相关" class="headerlink" title="Netty相关"></a>Netty相关</h3>51)    BIO、NIO和AIO<br>52)    Netty的各个组件<br>53)    Netty的线程模型<br>54)    TCP 粘包/拆包的原因及解决方法<br>55)    序列化协议，包括使用场景和如何选择<br>56)    Netty如何实现零拷贝<br>57)    Netty的高性能表现在哪些方面<h3 id="分布式相关"><a href="#分布式相关" class="headerlink" title="分布式相关"></a>分布式相关</h3>58)    Dubbo的底层实现原理和机制<br>59)    描述一个服务从发布到被消费的详细过程<br>60)    分布式系统服务如何治理<br>61)    消息中间件如何解决消息丢失问题<br>62)    接口幂等性的概念<br>63)    Dubbo的服务请求失败如何处理<br>64)    重连机制会不会造成错误<br>65)    对分布式事务的理解<br>66)    如何实现负载均衡，有哪些算法可以实现<br>67)    Zookeeper的用途，及选举原理是什么<br>68)    数据的垂直拆分和水平拆分<br>69)    Zookeeper原理和使用场景<br>70)    Zookeeperwatch机制<br>71)    Redis/zookeeper节点宕机如何处理<br>72)    分布式集群下如何做到唯一序列号<br>73)    如何做一个分布式锁<br>74)    用过哪些MQ，如何用的，与其他MQ相比有哪些优缺点<br>75)    MQ系统的数据如何保证不丢失<br>76)    Zookeeper的选举策略<br>77)    全局ID<h3 id="数据库相关"><a href="#数据库相关" class="headerlink" title="数据库相关"></a>数据库相关</h3>78)    Mysql分页有什么优化<br>79)    悲观锁和乐观锁<br>80)    组合索引，最左原则<br>81)    Mysql的表锁和行锁<br>82)    Mysql性能优化<br>83)    Mysql的索引分类，什么情况用什么索引<br>84)    事务的特性和隔离级别<h3 id="缓存相关"><a href="#缓存相关" class="headerlink" title="缓存相关"></a>缓存相关</h3>85)    Redis有哪些数据类型，redis底层如何实现<br>86)    Redis缓存穿透，缓存雪崩<br>87)    如何使用redis来实现分布式锁<br>88)    Redis并发竞争问题如何解决<br>89)    Redis持久化的几种方式，优缺点是什么，如何实现的<br>90)    Redis缓存失效策略<br>91)    Redis集群高可用原理<br>92)    Redis缓存分片<br>93)    Redis数据淘汰策略<h3 id="JVM相关"><a href="#JVM相关" class="headerlink" title="JVM相关"></a>JVM相关</h3>94)    详细jvm内存模型<br>95)    什么情况下回出现内存溢出，内存泄漏<br>96)    Java线程栈<br>97)    Jvm年轻代到老年代晋升过程的判断条件是什么<br>98)    Jvm出现fullGC很频繁，怎么去线上排查问题<br>99)    类加载为什么要用双亲委派模式，什么场景打破了这个模式<br>100)类的实例化顺序<br>101)Jvm垃圾回收机制，何时触发MinorGC等操作<br>102)Jvm中一次完整的GC流程是怎样的<br>103)各种回收器，各自优缺点，重点CMS,G1<br>104)Oom错误，Stack Overflow错误，permgen</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/13/java开始/" data-id="cj07vwv5z000168o0nylr54h9" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2018/09/26/interview/" data-id="cjmn0d9760004cwo0aad6by0g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -99,10 +139,10 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-meituan" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/03/13/hello-world/" class="article-date">
-  <time datetime="2017-03-13T03:46:31.845Z" itemprop="datePublished">2017-03-13</time>
+    <a href="/2018/04/17/meituan/" class="article-date">
+  <time datetime="2018-04-17T03:16:45.000Z" itemprop="datePublished">2018-04-17</time>
 </a>
     
   </div>
@@ -113,7 +153,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/13/hello-world/">Hello World</a>
+      <a class="article-title" href="/2018/04/17/meituan/">meituan</a>
     </h1>
   
 
@@ -121,20 +161,405 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>##面试<br>1volatile关键字的底层实现，volatile是不是原子性的<br>快排的时间复杂度<br>java中线程如何交互<br>java中的锁机制<br>悲观锁和乐观锁，应用中的案例，mysql当中怎么实现，java中的实现<br>长连接和短连接<br>tcp为什么三次握手却要四次分手<br>泛型<br>常见的异常类<br>单例模式（线程安全，双重检查）<br>spring了解（我面试的时候没有问）<br>常见的排序算法<br>线程和进程的区别<br>同步的控制方法<br>integer与int区别<br>重写和重载区别<br>hashmap与hashtable区别<br>常见的设计模式（一般是问你熟悉哪些）<br>抽象类与接口类区别<br>数据库索引<br>java lock的实现，公平锁、非公平锁<br>多线程中断的原理<br>B+，B-，红黑树，二叉搜索树，平衡搜索树<br>线程池（常见的线程池，各个参数的意义）<br>优化sql<br>ACID，隔离级别<br>JVM类加载机制<br>JVM分区<br>GC<br>垃圾收集器<br>还有一些常见的算法，链表啊树的等等</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/13/hello-world/" data-id="cj07vwv5e000068o0czvcqy4c" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2018/04/17/meituan/" data-id="cjmn0d97d0008cwo082znv588" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-zuchengyuanli" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/12/zuchengyuanli/" class="article-date">
+  <time datetime="2018-04-12T01:45:23.000Z" itemprop="datePublished">2018-04-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/12/zuchengyuanli/">zuchengyuanli</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原码乘法<br>原码除法<br>算术左移、右移<br>寻址方式：寄存器间接寻址、存储器间接寻址、相对寻址、立即寻址、直接寻址、变址寻址、寄存器寻址、隐含寻址<br>立即寻址，操作数在指令中<br>相对寻址：PC加地址字段的值<br>寄存器间接：寄存器</p>
+<p>寄存器：IR PC  MAR</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/12/zuchengyuanli/" data-id="cjmn0d97m000ecwo01vkjjb4p" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-update-cctv-wifi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/23/update-cctv-wifi/" class="article-date">
+  <time datetime="2018-03-23T03:16:43.000Z" itemprop="datePublished">2018-03-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/23/update-cctv-wifi/">update_cctv_wifi</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1 stop UAC(本地安全策略-安全设置-本地策略-安装选项-用户账号控制：以管理员标准模式运行所有管理员)<br>2 拷贝并安装除xamp(重启机器)<br>3 变更mysql密码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">c:\xampp\mysql\bin\mysqladmin -r root -p password</div><div class="line">Enter password:</div><div class="line">New password: srun_3000</div><div class="line">Confirm new password: srun_3000</div></pre></td></tr></table></figure></p>
+<p>4 通过Nvaicat for MySQL 工具新建数据库ipt_yangshi<br>5 导入数据库脚本ipt_yangshi.sql<br>6 拷贝两个dll文件到c:\xampp\php\ext<br>7 拷贝php.ini文件到c:\xampp\php</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/23/update-cctv-wifi/" data-id="cjmn0d97k000dcwo0pgemziih" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-apache" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/23/apache/" class="article-date">
+  <time datetime="2018-03-23T02:03:55.000Z" itemprop="datePublished">2018-03-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/23/apache/">apache</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-16-04" target="_blank" rel="external">How To Install the Apache Web Server on Ubuntu 16.04</a></p>
+<h3 id="Step-1-Install-Apache"><a href="#Step-1-Install-Apache" class="headerlink" title="Step 1: Install Apache"></a>Step 1: Install Apache</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install apache2</div></pre></td></tr></table></figure>
+<h3 id="Step-2-Check-your-Web-Server"><a href="#Step-2-Check-your-Web-Server" class="headerlink" title="Step 2: Check your Web Server"></a>Step 2: Check your Web Server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo systemctl status apache2</div></pre></td></tr></table></figure>
+<h3 id="file-dictory"><a href="#file-dictory" class="headerlink" title="file dictory"></a>file dictory</h3><p>/var/www/html</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/23/apache/" data-id="cjmn0d96s0000cwo05a1edve0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/26/linux/" class="article-date">
+  <time datetime="2018-01-26T06:40:22.000Z" itemprop="datePublished">2018-01-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/26/linux/">linux</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="apt-get下载文件目录"><a href="#apt-get下载文件目录" class="headerlink" title="apt-get下载文件目录"></a>apt-get下载文件目录</h3><p>apt-get下载文件目录默认在/var/cache/apt/archives。<br>如果apt-get install 下载慢， 而网络下载deb快，可以把下载的deb文件放到该目录。<br>再执行安装就不下载直接安装了</p>
+<h3 id="pip"><a href="#pip" class="headerlink" title="pip"></a><a href="http://www.ttlsa.com/python/how-to-install-and-use-pip-ttlsa/" target="_blank" rel="external">pip</a></h3><h3 id="Ubuntu下apt-get安装与pip安装的区别"><a href="#Ubuntu下apt-get安装与pip安装的区别" class="headerlink" title="Ubuntu下apt-get安装与pip安装的区别"></a><a href="http://blog.csdn.net/rona_lin/article/details/45028277" target="_blank" rel="external">Ubuntu下apt-get安装与pip安装的区别</a></h3><h2 id="shadowsocks-服务器安装"><a href="#shadowsocks-服务器安装" class="headerlink" title="shadowsocks 服务器安装"></a><a href="https://linghucong.js.org/2016/04/20/setup-Shadowsocks-on-ubuntu-1604/" target="_blank" rel="external">shadowsocks 服务器安装</a></h2><h3 id="更新软件源"><a href="#更新软件源" class="headerlink" title="更新软件源"></a>更新软件源</h3><p>sudo apt-get update</p>
+<h3 id="然后安装-PIP-环境"><a href="#然后安装-PIP-环境" class="headerlink" title="然后安装 PIP 环境"></a>然后安装 PIP 环境</h3><p>sudo apt-get install python-pip</p>
+<h3 id="直接安装-shadowsocks"><a href="#直接安装-shadowsocks" class="headerlink" title="直接安装 shadowsocks"></a>直接安装 shadowsocks</h3><p>sudo pip install shadowsocks</p>
+<h2 id="运行-shadowsocks-服务器"><a href="#运行-shadowsocks-服务器" class="headerlink" title="运行 shadowsocks 服务器"></a>运行 shadowsocks 服务器</h2><h3 id="启动命令如下：如果要停止运行，将命令中的start改成stop。"><a href="#启动命令如下：如果要停止运行，将命令中的start改成stop。" class="headerlink" title="启动命令如下：如果要停止运行，将命令中的start改成stop。"></a>启动命令如下：如果要停止运行，将命令中的start改成stop。</h3><p>sudo ssserver -p 8388 -k password -m rc4-md5 -d start</p>
+<h3 id="也可以使用配置文件进行配置，方法创建-etc-shadowsocks-json文件，填入如下内容："><a href="#也可以使用配置文件进行配置，方法创建-etc-shadowsocks-json文件，填入如下内容：" class="headerlink" title="也可以使用配置文件进行配置，方法创建/etc/shadowsocks.json文件，填入如下内容："></a>也可以使用配置文件进行配置，方法创建/etc/shadowsocks.json文件，填入如下内容：</h3><p>{<br>    “server”:”my_server_ip”,<br>    “server_port”:8388,<br>    “local_address”: “127.0.0.1”,<br>    “local_port”:1080,<br>    “password”:”mypassword”,<br>    “timeout”:300,<br>    “method”:”rc4-md5”<br>}</p>
+<h3 id="创建完毕后，赋予文件权限"><a href="#创建完毕后，赋予文件权限" class="headerlink" title="创建完毕后，赋予文件权限"></a>创建完毕后，赋予文件权限</h3><p>sudo chmod 755 /etc/shadowsocks.json</p>
+<h3 id="为了支持这些加密方式，你要需要安装"><a href="#为了支持这些加密方式，你要需要安装" class="headerlink" title="为了支持这些加密方式，你要需要安装"></a>为了支持这些加密方式，你要需要安装</h3><p>sudo apt–get install python–m2crypto</p>
+<h3 id="然后使用配置文件在后台运行"><a href="#然后使用配置文件在后台运行" class="headerlink" title="然后使用配置文件在后台运行"></a>然后使用配置文件在后台运行</h3><p>sudo ssserver -c /etc/shadowsocks.json -d start</p>
+<h2 id="配置开机自启动"><a href="#配置开机自启动" class="headerlink" title="配置开机自启动"></a>配置开机自启动</h2><h3 id="编辑-etc-rc-local-文件"><a href="#编辑-etc-rc-local-文件" class="headerlink" title="编辑 /etc/rc.local 文件"></a>编辑 /etc/rc.local 文件</h3><p>sudo vi /etc/rc.local</p>
+<h3 id="在-exit-0-这一行的上边加入如下"><a href="#在-exit-0-这一行的上边加入如下" class="headerlink" title="在 exit 0 这一行的上边加入如下"></a>在 exit 0 这一行的上边加入如下</h3><p>/usr/local/bin/ssserver –c /etc/shadowsocks.json</p>
+<h3 id="或者-不用配置文件-直接加入命令启动如下"><a href="#或者-不用配置文件-直接加入命令启动如下" class="headerlink" title="或者 不用配置文件 直接加入命令启动如下"></a>或者 不用配置文件 直接加入命令启动如下</h3><p>/usr/local/bin/ssserver -p 8388 -k password -m aes-256-cfb -d start</p>
+<h2 id="ubuntu安装界面，基于GNOME"><a href="#ubuntu安装界面，基于GNOME" class="headerlink" title="ubuntu安装界面，基于GNOME"></a>ubuntu安装界面，基于GNOME</h2><p>二、安装<br>1、首先，ubuntu server版本的安装这里就不再赘述，基本的还是三个步骤，首先是下载镜像，然后使用ultraISO刻录至u盘，最后通过U盘引导进行安装。安装过程中，会要求你输入用户名和密码，一定要牢记，因为后续软件的安装都需要密码。<br>2、然后，login进入系统之后，开始进行用户界面的安装。首先输入如下命令：<br>sudo apt-get install xinit<br>3、上述安装完毕之后，再安装环境管理器。本人亲测安装的是GNOME。使用如下命令安装：<br>sudo apt-get install gdm<br>4、然后，安装桌面环境。本人亲测安装的是KUbuntu。安装命令如下：<br>sudo apt-get install kubuntu-desktop<br>5、网上有人还说要安装一些必要的包，如新立得软件包管理器，中文支持等，如果你嫌麻烦，可以不进行安装。上述安装完毕之后，直接重启。重启完成后，再进入系统，便是图形界面了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/26/linux/" data-id="cjmn0d9790006cwo0ptiywsn7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-频道包装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/26/频道包装/" class="article-date">
+  <time datetime="2018-01-26T02:13:40.000Z" itemprop="datePublished">2018-01-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/26/频道包装/">频道包装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##台标、拉滚、时钟模板</p>
+<ol>
+<li>前台页面可通过模板管理页面来添加，通过分组类型来区分与普通模板的管理</li>
+<li>暂时制作、播出模板的接口交互中，没有处理分组类型</li>
+<li>与下级机之间援用心跳接口，下级机请求后，迁移请求的模板</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/26/频道包装/" data-id="cjmn0d97u000fcwo0vdgrw9a0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-readme" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/25/readme/" class="article-date">
+  <time datetime="2018-01-25T08:23:24.000Z" itemprop="datePublished">2018-01-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/25/readme/">readme</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>git clone git@github.com:dradons/dradons.github.io.git  .deploy/dradons.github.io.git</p>
+<p>cp -R /d/tools/hexo/jetsen/public/* /d/tools/hexo/jetsen/.deploy/dradons<br>cd /d/tools/hexo/jetsen/.deploy/dradons<br>git add .<br>git commit -m “update”<br>git push origin master</p>
+<p>cd /d/tools/hexo/jetsen<br>hexo new [layout] <title></title></p>
+<p>$  git status</p>
+<p>$ hexo n == hexo new<br>$ hexo g == hexo generate<br>$ hexo s == hexo server<br>$ hexo d == hexo deploy</p>
+<p>git rm -r -n –cached  <em><br>git rm -r –cached </em><br>git commit -m”移除src目录下所有文件的版本控制”<br>git push origin master</p>
+<p>Host github.com<br>User jetsen02@163.com<br>Hostname ssh.github.com<br>PreferredAuthentications publickey<br>IdentityFile ~/.ssh/id_rsa<br>Port 443</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/25/readme/" data-id="cjmn0d97j000ccwo0q5g941kq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-often" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/21/often/" class="article-date">
+  <time datetime="2017-12-21T02:44:04.000Z" itemprop="datePublished">2017-12-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/21/often/">often</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>netstat -ano|findstr “8006”</p>
+<p>exp pk2admin/password@orcl owner=pk2admin file=C:\Users\lenovo\Desktop\ppn_data2.dmp<br>imp test/password@orcl full=y file=C:\Users\lenovo\Desktop\ppn_data2.dmp</p>
+<p>6222600910073994731</p>
+<p>wspath<br>/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/server1<br>/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/installedApps/UE2-T-AppCell01</p>
+<p>osoperator user create-group 76543 G2016Z08880001 G2016Z08880001</p>
+<p>/opt/WebSphere/AppServer/profiles/Custom01/logs/A4K-app-02-server1   10.121.177.2<br>/opt/WebSphere/AppServer/profiles/Dmgr01/logs/dmgr    10.121.177.1</p>
+<p>#############<br><a href="https://10.122.6.1:9043/ibm/console/logon.jsp" target="_blank" rel="external">https://10.122.6.1:9043/ibm/console/logon.jsp</a>    admin admin<br>10.122.6.1<br>ZAQ!XSW@cde3vfr4<br> ps -efl | grep WebS<br> kill -9 123<br>/opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin/startManager.sh<br>/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/startNode.sh<br>/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/startServer.sh server1<br>/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/server1<br>/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/installedApps/UE2-T-AppCell01<br>/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/installedApps/UE2-T-AppCell01/PPN_TRANS_21_war.ear/PPN_TRANS_21.war/WEB-INF/classes/jetsennet/ppn/services/wfm</p>
+<p>########ue2ws<br>vfr4cde3XSW@ZAQ!<br>vfr4cde3XSW@ZAQ!<br>/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/UE2-App-01<br>/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/UE2-App-02</p>
+<p>/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/installedApps/UE2-App-01Cell01/jppn_ue2_20161201_war.ear/jppn_ue2_20161201.war</p>
+<p>10.121.47.33  PK1-APP-01Node01-server1<br>/opt/WebSphere/AppServer/profiles/Custom01/logs/PK1-APP-01Node01-server1 </p>
+<p>/opt/WebSphere/AppServer/profiles/Dmgr01/bin/startManager.sh<br>/opt/WebSphere/AppServer/profiles/Custom01/bin/startNode.sh<br>/opt/WebSphere/AppServer/profiles/Custom01/bin/startServer.sh PK1-APP-01Node01-server1</p>
+<p>/opt/WebSphere/AppServer/profiles/Custom01/bin/stopNode.sh<br>/opt/WebSphere/AppServer/profiles/Dmgr01/bin/stopManager.sh</p>
+<p>10.121.47.34  PK1-APP-02Node01-server1<br>/opt/WebSphere/AppServer/profiles/Custom01/logs/PK1-APP-02Node01-server1</p>
+<p>/opt/WebSphere/AppServer/profiles/Custom01/bin/startNode.sh<br>/opt/WebSphere/AppServer/profiles/Custom01/bin/startServer.sh PK1-APP-02Node01-server1</p>
+<hr>
+<p>cd /opt/IBM/HTTPServer/Plugins/config/webserver1<br>vi plugin-cfg.xml </p>
+<p><uri affinitycookie="JSESSIONID" affinityurlidentifier="jsessionid" name="/PpnTrans/*"><br>/opt/IBM/HTTPServer/bin/apachectl start</uri></p>
+<p>———-banwagong vps————————————<br>104.224.168.73  26781</p>
+<h2 id="root-sdm4QUFcgyAw"><a href="#root-sdm4QUFcgyAw" class="headerlink" title="root/sdm4QUFcgyAw"></a>root/sdm4QUFcgyAw</h2><p>protask<em>code 生成方式是ZJ</em>[book的主键]     15000731</p>
+<p>sudo timedatectl set-timezone Asia/Shanghai<br>———-linux soap—————————————————–</p>
+<p>curl -H ‘Content-Type: text/xml;charset=UTF-8;SOAPAction:”importAllow”‘ -d @/home/jetsen/Desktop/1.xml <a href="http://192.168.137.1:8080/PPN_UE2/services/PK1_ImportAllowService" target="_blank" rel="external">http://192.168.137.1:8080/PPN_UE2/services/PK1_ImportAllowService</a></p>
+<p>curl -H ‘Content-Type: text/xml;charset=UTF-8;SOAPAction:”importAllow”‘ -d @/root/importallowtest/1.xml <a href="http://10.111.3.23/ESBGWWeb/sca/ESBExport" target="_blank" rel="external">http://10.111.3.23/ESBGWWeb/sca/ESBExport</a></p>
+<p>curl -H ‘Content-Type: text/xml;charset=UTF-8;SOAPAction:”addImportTask”‘ -d @/root/importallowtest/nettasknew.xml <a href="http://10.111.3.23/ESBGWWeb/sca/ESBExport" target="_blank" rel="external">http://10.111.3.23/ESBGWWeb/sca/ESBExport</a></p>
+<p>curl -H ‘Content-Type: text/xml;charset=UTF-8;SOAPAction:”publish”‘ -d @/root/importallowtest/pgm.xml <a href="http://10.111.3.23/ESBGWWeb/sca/ESBExport" target="_blank" rel="external">http://10.111.3.23/ESBGWWeb/sca/ESBExport</a></p>
+<p>keytool -genkey -keyalg RSA -alias yufa -keystore d:\etc\cas\thekeystore    (changeit)</p>
+<p>——————-cmd—–syntax———————————————————————-</p>
+<h2 id="change-cmd-to-English"><a href="#change-cmd-to-English" class="headerlink" title="change cmd to English"></a>change cmd to English</h2><p>chcp 437</p>
+<h2 id="Delete-one-or-more-files"><a href="#Delete-one-or-more-files" class="headerlink" title="Delete one or more files."></a>Delete one or more files.</h2><p>del /p *.log</p>
+<h2 id="Delete-folder-s"><a href="#Delete-folder-s" class="headerlink" title="Delete folder(s)"></a>Delete folder(s)</h2><p>Syntax<br>      RD pathname<br>      RD /S pathname<br>      RD /S /Q pathname</p>
+<h2 id="Tasklist-command"><a href="#Tasklist-command" class="headerlink" title="Tasklist command"></a>Tasklist command</h2><p>tasklist /fi “memusage gt 30000”</p>
+<p>tasklist /fi “pid eq 6544”</p>
+<p>tasklist /fi “imagename eq firefox.exe”</p>
+<h2 id="taskkill"><a href="#taskkill" class="headerlink" title="taskkill"></a>taskkill</h2><p>taskkill /pid 15900<br>taskkill /fi “pid eq 15900”</p>
+<p>##WHERE Locate and display files in a directory tree.<br>where /t cas*.log</p>
+<hr>
+<p>1.su oracle </p>
+<p>然后启动监听器</p>
+<p>1.lsnrctl start<br>会看到启动成功的界面;</p>
+<p>1.lsnrctl stop<br>停止监听器命令.</p>
+<p>1.lsnrctl status<br>查看监听器命令.</p>
+<p>sudo apt-get update</p>
+<p>sudo apt-get install python-pip</p>
+<p>sudo pip install shadowsocks</p>
+<p>sudo ssserver -p 8388 -k yangyufa -m aes-256-cfb -d start</p>
+<p>————angular js ———<br>angular js 思维导图在github搜索TeamStuQ/skill-map</p>
+<p>大漠孤烟 开源中国</p>
+<p><a href="https://my.oschina.net/mumu/blog/1519357" target="_blank" rel="external">https://my.oschina.net/mumu/blog/1519357</a></p>
+<p><a href="http://video.tudou.com/v/XMjUwMjYyNTA5Ng==.html?spm=a2hzp.8244740.0.0&amp;f=29431430" target="_blank" rel="external">http://video.tudou.com/v/XMjUwMjYyNTA5Ng==.html?spm=a2hzp.8244740.0.0&amp;f=29431430</a></p>
+<p>————–docker———</p>
+<p>docker run -d –name myrabbitmq -p 5673:5672 -p 15673:1567</p>
+<p>docker run -p 6379:6379 -v $PWD/data:/data  -d –name myredis6379 redis redis-server –appendonly yes</p>
+<p>docker exec -it myrabbitmq /bin/bash</p>
+<p>docker inspect node1 | grep IPA</p>
+<p>redis-cli -h 172.17.0.1 -p 26380 info Sentinel<br>————————————redis slave—-172.17.0.4——————redis-cli -h 127.0.0.1 -p 6379 info replication——<br>docker run -d \<br>-p 6380:6380 \<br>-v /home/jetsen/conf/redis6380.conf:/etc/redis/redis6380.conf \<br>-v /home/jetsen/data:/data \<br>–name redis_node1 \<br> redis \<br>redis-server /etc/redis/redis6380.conf<br>———————————–redis slave —–172.17.0.5————<br>docker run -d \<br>-p 6381:6381 \<br>-v /home/jetsen/conf/redis6381.conf:/etc/redis/redis6381.conf \<br>-v /home/jetsen/data:/data \<br>–name redis_node2 \<br> redis \<br>redis-server /etc/redis/redis6381.conf<br>redis-sentinel-26380.conf<br>——————————-sentinel————-172.17.0.7————–redis-cli -h 127.0.0.1 -p 26379 info Sentinel-<br>docker run -d \<br>-p 26379:26379 \<br>-v /home/jetsen/conf/redis-sentinel-26379.conf:/etc/redis/redis-sentinel-26379.conf \<br>-v /home/jetsen/data:/data \<br>–name sentinel-26379 \<br> redis \<br>redis-sentinel /etc/redis/redis-sentinel-26379.conf<br>——————————-sentinel———-172.17.0.6——————-<br>docker run -d \<br>-p 26380:26380 \<br>-v /home/jetsen/conf/redis-sentinel-26380.conf:/etc/redis/redis-sentinel-26380.conf \<br>-v /home/jetsen/data:/data \<br>–name sentinel-26380 \<br> redis \<br>redis-sentinel /etc/redis/redis-sentinel-26380.conf<br>——————————-sentinel———-172.17.0.8——————-<br>docker run -d \<br>-p 26381:26381 \<br>-v /home/jetsen/conf/redis-sentinel-26381.conf:/etc/redis/redis-sentinel-26381.conf \<br>-v /home/jetsen/data:/data \<br>–name sentinel-26381 \<br> redis \<br>redis-sentinel /etc/redis/redis-sentinel-26381.conf</p>
+<p>—————-MySQL————<br>sudo docker run –name first-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql</p>
+<p>———————–zookeeper—————–<br>docker run –name my_zookeeper -p 2181:2181 -d zookeeper</p>
+<p>docker logs -f my_zookeeper</p>
+<p>docker run -it –rm –link my_zookeeper:zookeeper zookeeper zkCli.sh -server zookeeper</p>
+<h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h1><p>MAVEN_HOME=/usr/local/maven3.5.2<br>PATH=$PATH:$MAVEN_HOME/bin<br>MAVEN_OPTS=”-Xms256m -Xmx356m”<br>export MAVEN_HOME<br>export PATH<br>export MAVEN_OPTS</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/21/often/" data-id="cjmn0d97e0009cwo02xmxl39v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-job-skills" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/24/job-skills/" class="article-date">
+  <time datetime="2017-11-24T03:18:00.000Z" itemprop="datePublished">2017-11-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/24/job-skills/">job-skills</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="美团高级java职位描述："><a href="#美团高级java职位描述：" class="headerlink" title="美团高级java职位描述："></a>美团高级java职位描述：</h3><ol>
+<li>扎实的计算机专业基本功，强大的写码能力；（必须）</li>
+<li>熟练掌握 Java 及面向对象设计开发，对部分 Java 技术有深入研究，研究过优秀开源软件的源码并有心得者优先；</li>
+<li>了解 SOA 架构理念、实现技术；熟悉常见设计模式，熟练掌握Spring、myBatis 等框架；</li>
+<li>熟练掌握 MySQL 应用开发、数据库原理和常用性能优化和扩展技术，以及 NoSQL，Queue 的原理、使用场景以及限制</li>
+<li>研究过 http 协议、搜索引擎、缓存、jvm调优、序列化、nio、RPC 调用框架等，有相应实践经验者优先</li>
+<li>参与过大型复杂分布式互联网（特别是电商） 用户端 WEB / API 系统的设计开发者优先 </li>
+<li>拥有和工作年限相称的广度和（或）深度，有较强的逻辑/概率思维能力，善于分析、归纳、描述、沟通、和解决问题； </li>
+<li><p>高度的创业心和投入度，既能搞定牛逼的技术难题，同时又热切地关注业务，用技术力贡献于业务成功</p>
+<h3 id="SpringCloud"><a href="#SpringCloud" class="headerlink" title="SpringCloud"></a>SpringCloud</h3></li>
+</ol>
+<p>10 leg lift touches 手指脚趾接触<br>20 toe touches      腿竖立双手触摸脚趾<br>10 twists each side 卷腹后双手左右摆动<br>10 single leg crunch (each side) 单腿蜷缩伸直<br>10 double leg crunches  双腿蜷缩伸直<br>10 cross leg lifts(each side)  单盘腿抬起<br>13 siders(both side=1) 双腿并拢左右摇摆<br>10 pulsators 双腿并拢抬起<br>20 roll ups  腿隆起卷腹<br>20 hell touches(each way) 腿隆起左右摇摆<br>10 plank crunches 平板隆起<br>8  plank twists (each side) 平板后隆起单腿左右摇摆<br>10 up and ups 腿抬起<br>20 toe touches 腿竖立双手触摸脚趾<br>30 bicycles 空中自行车</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/24/job-skills/" data-id="cjmn0d97b0007cwo0akwfc24a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -145,6 +570,10 @@
 
   
 
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
 </section>
         
           <aside id="sidebar">
@@ -161,7 +590,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
     </div>
   </div>
 
@@ -169,16 +598,28 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2017/03/13/java开始/">java开始</a>
+            <a href="/2018/09/26/interview/">interview</a>
           </li>
         
           <li>
-            <a href="/2017/03/13/hello-world/">Hello World</a>
+            <a href="/2018/04/17/meituan/">meituan</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/12/zuchengyuanli/">zuchengyuanli</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/23/update-cctv-wifi/">update_cctv_wifi</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/23/apache/">apache</a>
           </li>
         
       </ul>
@@ -193,8 +634,8 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 John Doe<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

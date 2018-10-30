@@ -123,7 +123,13 @@
 <li><a href="https://www.cnblogs.com/aspirant/p/9082858.html" target="_blank" rel="external">BeanFactory和FactoryBean的区别</a><br>BeanFactory是个Factory，也就是IOC容器或对象工厂，FactoryBean是个Bean。在Spring中，所有的Bean都是由BeanFactory(也就是IOC容器)来进行管理的。但对FactoryBean而言，这个Bean不是简单的Bean，而是一个能生产或者修饰对象生成的工厂Bean,它的实现与设计模式中的工厂模式和修饰器模式类似 </li>
 <li><a href="https://www.cnblogs.com/chenjunjie12321/p/6124649.html" target="_blank" rel="external">Spring IOC的理解及初始化过程</a><br>IoC文英全称Inversion of Control，即控制反转，我么可以这么理解IoC容器：“把某些业务对象的的控制权交给一个平台或者框架来同一管理，这个同一管理的平台可以称为IoC容器。”<br>（1）定位并获取资源文件(2)通过返回的resource对象进行BeanDefinition的载入(3)将BeanDefiniton注册到容器中</li>
 <li><a href="https://www.cnblogs.com/wnlja/p/3907836.html" target="_blank" rel="external">BeanFactory和ApplicationContext的区别和联系</a><br>BeanFacotry延迟加载，第一次调用getBean方法才会抛出异常，而ApplicationContext则初始化后自检；都支持<br>BeanPostProcessor、BeanFactoryPostProcessor的使用，前者需要手动注册、而后者自动注册</li>
-<li>Springbean的生命周期，如何被管理的<br><img src="https://upload-images.jianshu.io/upload_images/44770-f312de031566217d.png?imageMogr2/auto-orient/" alt="Springbean的生命周期"><br>1实例化一个Bean，也就是我们通常说的new<br>2按照Spring上下文对实例化的Bean进行配置，也就是IOC注入<br>3如果这个Bean实现了BeanNameAware接口，会调用它实现的setBeanName(String beanId)方法，此处传递的是Spring配置文件中Bean的ID<br>4 如果这个Bean实现了BeanFactoryAware接口，会调用它实现的setBeanFactory()，传递的是Spring工厂本身（可以用这个方法获取到其他Bean）<br>5 如果这个Bean实现了ApplicationContextAware接口，会调用setApplicationContext(ApplicationContext)方法，传入Spring上下文，该方式同样可以实现步骤4，但比4更好，以为ApplicationContext是BeanFactory的子接口，有更多的实现方法<br>6如果这个Bean关联了BeanPostProcessor接口，将会调用postProcessBeforeInitialization(Object obj, String s)方法，BeanPostProcessor经常被用作是Bean内容的更改，并且由于这个是在Bean初始化结束时调用After方法，也可用于内存或缓存技术<br>7 如果这个Bean在Spring配置文件中配置了init-method属性会自动调用其配置的初始化方法<br>8如果这个Bean关联了BeanPostProcessor接口，将会调用postAfterInitialization(Object obj, String s)方法<br>注意：以上工作完成以后就可以用这个Bean了，那这个Bean是一个single的，所以一般情况下我们调用同一个ID的Bean会是在内容地址相同的实例<br>9 当Bean不再需要时，会经过清理阶段，如果Bean实现了DisposableBean接口，会调用其实现的destroy方法<br>10最后，如果这个Bean的Spring配置中配置了destroy-method属性，会自动调用其配置的销毁方法<br>41)    Springbean的加载过程<br>42)    SpringAOP要是自己实现该如何实现<br>43)    SpringIOC要是自己实现该如何实现<br>44)    Spring是如何管理事务的，事务管理机制<br>45)    Spring不同事务传播行为有哪些，有什么用<br>46)    Spring中用到了哪些设计模式<br>47)    SpringMVC工作原理<br>48)    Spring循环注入的原理<br>49)    Springaop的理解，各个术语相互直接是怎么工作的<br>50)    Spring如何保证controller并发的安全性<h3 id="Netty相关"><a href="#Netty相关" class="headerlink" title="Netty相关"></a>Netty相关</h3>51)    BIO、NIO和AIO<br>52)    Netty的各个组件<br>53)    Netty的线程模型<br>54)    TCP 粘包/拆包的原因及解决方法<br>55)    序列化协议，包括使用场景和如何选择<br>56)    Netty如何实现零拷贝<br>57)    Netty的高性能表现在哪些方面<h3 id="分布式相关"><a href="#分布式相关" class="headerlink" title="分布式相关"></a>分布式相关</h3>58)    Dubbo的底层实现原理和机制<br>59)    描述一个服务从发布到被消费的详细过程<br>60)    分布式系统服务如何治理<br>61)    消息中间件如何解决消息丢失问题<br>62)    接口幂等性的概念<br>63)    Dubbo的服务请求失败如何处理<br>64)    重连机制会不会造成错误<br>65)    对分布式事务的理解<br>66)    如何实现负载均衡，有哪些算法可以实现<br>67)    Zookeeper的用途，及选举原理是什么<br>68)    数据的垂直拆分和水平拆分<br>69)    Zookeeper原理和使用场景<br>70)    Zookeeperwatch机制<br>71)    Redis/zookeeper节点宕机如何处理<br>72)    分布式集群下如何做到唯一序列号<br>73)    如何做一个分布式锁<br>74)    用过哪些MQ，如何用的，与其他MQ相比有哪些优缺点<br>75)    MQ系统的数据如何保证不丢失<br>76)    Zookeeper的选举策略<br>77)    全局ID<h3 id="数据库相关"><a href="#数据库相关" class="headerlink" title="数据库相关"></a>数据库相关</h3>78)    Mysql分页有什么优化<br>79)    悲观锁和乐观锁<br>80)    组合索引，最左原则<br>81)    Mysql的表锁和行锁<br>82)    Mysql性能优化<br>83)    Mysql的索引分类，什么情况用什么索引<br>84)    事务的特性和隔离级别<h3 id="缓存相关"><a href="#缓存相关" class="headerlink" title="缓存相关"></a>缓存相关</h3></li>
+<li>Springbean的生命周期，如何被管理的<br><img src="https://upload-images.jianshu.io/upload_images/44770-f312de031566217d.png?imageMogr2/auto-orient/" alt="Springbean的生命周期"><br>1实例化一个Bean，也就是我们通常说的new<br>2按照Spring上下文对实例化的Bean进行配置，也就是IOC注入<br>3如果这个Bean实现了BeanNameAware接口，会调用它实现的setBeanName(String beanId)方法，此处传递的是Spring配置文件中Bean的ID<br>4 如果这个Bean实现了BeanFactoryAware接口，会调用它实现的setBeanFactory()，传递的是Spring工厂本身（可以用这个方法获取到其他Bean）<br>5 如果这个Bean实现了ApplicationContextAware接口，会调用setApplicationContext(ApplicationContext)方法，传入Spring上下文，该方式同样可以实现步骤4，但比4更好，以为ApplicationContext是BeanFactory的子接口，有更多的实现方法<br>6如果这个Bean关联了BeanPostProcessor接口，将会调用postProcessBeforeInitialization(Object obj, String s)方法，BeanPostProcessor经常被用作是Bean内容的更改，并且由于这个是在Bean初始化结束时调用After方法，也可用于内存或缓存技术<br>7 如果这个Bean在Spring配置文件中配置了init-method属性会自动调用其配置的初始化方法<br>8如果这个Bean关联了BeanPostProcessor接口，将会调用postAfterInitialization(Object obj, String s)方法<br>注意：以上工作完成以后就可以用这个Bean了，那这个Bean是一个single的，所以一般情况下我们调用同一个ID的Bean会是在内容地址相同的实例<br>9 当Bean不再需要时，会经过清理阶段，如果Bean实现了DisposableBean接口，会调用其实现的destroy方法<br>10最后，如果这个Bean的Spring配置中配置了destroy-method属性，会自动调用其配置的销毁方法<br>41)    Springbean的加载过程<br>42)    SpringAOP要是自己实现该如何实现<br>43)    SpringIOC要是自己实现该如何实现<br>44)    Spring是如何管理事务的，事务管理机制<br>45)    Spring不同事务传播行为有哪些，有什么用<br>46)    Spring中用到了哪些设计模式<br>47)    SpringMVC工作原理<br>48)    Spring循环注入的原理<br>49)    Springaop的理解，各个术语相互直接是怎么工作的<br>50)    Spring如何保证controller并发的安全性<h3 id="Netty相关"><a href="#Netty相关" class="headerlink" title="Netty相关"></a>Netty相关</h3>51)    BIO、NIO和AIO<br>52)    Netty的各个组件<br>53)    Netty的线程模型<br>54)    TCP 粘包/拆包的原因及解决方法<br>55)    序列化协议，包括使用场景和如何选择<br>56)    Netty如何实现零拷贝<br>57)    Netty的高性能表现在哪些方面<h3 id="分布式相关"><a href="#分布式相关" class="headerlink" title="分布式相关"></a>分布式相关</h3>58)    Dubbo的底层实现原理和机制<br>59)    描述一个服务从发布到被消费的详细过程<br>60)    分布式系统服务如何治理<br>61)    消息中间件如何解决消息丢失问题<br>62)    接口幂等性的概念<br>63)    Dubbo的服务请求失败如何处理<br>64)    重连机制会不会造成错误<br>65)    对分布式事务的理解<br>66)    如何实现负载均衡，有哪些算法可以实现<br>67)    Zookeeper的用途，及选举原理是什么<br>68)    数据的垂直拆分和水平拆分<br>69)    Zookeeper原理和使用场景<br>70)    Zookeeperwatch机制<br>71)    Redis/zookeeper节点宕机如何处理<br>72)    分布式集群下如何做到唯一序列号<br>73)    如何做一个分布式锁<br>74)    用过哪些MQ，如何用的，与其他MQ相比有哪些优缺点<br>75)    MQ系统的数据如何保证不丢失<br>76)    Zookeeper的选举策略<br>77)    全局ID<h3 id="数据库相关"><a href="#数据库相关" class="headerlink" title="数据库相关"></a>数据库相关</h3>78)    Mysql分页有什么优化</li>
+<li><a href="https://www.cnblogs.com/zhiqian-ali/p/6200874.html" target="_blank" rel="external">悲观锁和乐观锁</a><br>悲观锁的特点是先获取锁，再进行业务操作。select for update会锁扫描过的行，所以务确定走索引非全表扫描<br>乐观锁的特点先进行业务操作，不到万不得已不去拿锁。非数据库提供的，一般通过数据增加版本号实现</li>
+<li>组合索引，<a href="https://www.cnblogs.com/wxgblogs/p/5743895.html" target="_blank" rel="external">最左原则</a><br>将多列属性合并为一个索引，最左前缀原则 1 (1,2) (1,2,3)</li>
+<li>Mysql的<a href="https://www.cnblogs.com/lsxuejava/p/7305920.html" target="_blank" rel="external">表锁和行锁</a><br>表锁：开销小，加锁快，不会出现死锁；锁粒度大，发生锁冲突的概率高，并发度最低<br>行锁：开销大，加锁慢，会出现死锁；锁粒度最小，发生锁冲突的概率低，并发度最高<br>MyISAM与InnoDB不同：后者支持事务、行级锁</li>
+<li>Mysql性能优化</li>
+<li>Mysql的索引分类，什么情况用什么索引<br>单列索引和组合索引</li>
+<li>事务的特性和隔离级别<br>同81<br>特性：原子性、一致性、隔离性、持久性<br>级别：未提交读、已提交读、可重复读、可序列化<h3 id="缓存相关"><a href="#缓存相关" class="headerlink" title="缓存相关"></a>缓存相关</h3></li>
 <li>Redis有哪些数据类型，[redis底层]如何实现(<a href="https://www.cnblogs.com/ysocean/p/9102811.html" target="_blank" rel="external">https://www.cnblogs.com/ysocean/p/9102811.html</a>)<br>String:一个key对应一个value,可包含任意数据，value最大512MB<br>list: 简单的字符串列表，按插入排序，可插入到列表的头部或尾部，底层是链表<br>set: String类型的无序集合<br>zset: sorted set 有序集合<br>hash: 键值对集合，key还是key,value是键值对(key-value)</li>
 <li>Redis<a href="https://www.cnblogs.com/zhangweizhong/p/6258797.html" target="_blank" rel="external">缓存穿透，缓存雪崩</a><br>缓存穿透是指用户查询数据，数据库没有，造成每次都去数据库再查询一次，然后返回空。可通过缓存存放默认值，<br>不会继续访问数据库，空结果也缓存，下次不会返回空的。<br>缓存雪崩：由于原缓存失效，新缓存未到期间，所有请求查询数据库，对数据库造成压力，形成连锁反应，造成系统崩溃，<br>遇到这种情况1是加锁排队2每一个缓存加缓存标记，记录缓存是否失效，如果标记失效，则更新数据缓存(标记缓存时间小于<br>数据缓存时间)</li>
 <li><p>如何使用redis来实现<a href="https://blog.csdn.net/fengshizty/article/details/53561562" target="_blank" rel="external">分布式锁</a><br>setnx()命令实现加锁，其中key是锁，value是锁的过期时间。执行过程：1. 通过setnx()方法尝试加锁，如果当前锁不存在，返回加锁成功。2.如果锁已经存在则获取锁的过期时间，和当前时间比较，如果锁已经过期，则设置新的过期时间，返回加锁成功<br>解决死锁：持有锁的客户端失败或崩溃不释放锁，通过锁键的时间戳判断。</p>
@@ -160,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/26/interview/" data-id="cjn1fjy1s0000g4o00prl5dmd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/26/interview/" data-id="cjnv8suft0002jgo0p3nzp0sa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -197,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/17/meituan/" data-id="cjn1fjy5x000fg4o0gn0yggf2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/17/meituan/" data-id="cjnv8suhd000djgo0yjygrhki" class="article-share-link">Share</a>
       
       
     </footer>
@@ -235,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/12/zuchengyuanli/" data-id="cjn1fjy4y000cg4o07xzccd3i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/12/zuchengyuanli/" data-id="cjnv8suh9000ajgo0kick3qey" class="article-share-link">Share</a>
       
       
     </footer>
@@ -273,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/update-cctv-wifi/" data-id="cjn1fjy4w000bg4o0axlnfnnf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/23/update-cctv-wifi/" data-id="cjnv8suha000bjgo0yio9eeir" class="article-share-link">Share</a>
       
       
     </footer>
@@ -313,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/apache/" data-id="cjn1fjy3l0001g4o0k2fife29" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/23/apache/" data-id="cjnv8sufb0001jgo0ny1xit4g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -362,7 +368,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/26/linux/" data-id="cjn1fjy4s0009g4o0fydliweb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/26/linux/" data-id="cjnv8suhf000fjgo03fia57lq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -404,7 +410,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/26/频道包装/" data-id="cjn1fjy50000dg4o02p9p9qz8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/26/频道包装/" data-id="cjnv8suhc000cjgo03m7e7g5s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -447,7 +453,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/readme/" data-id="cjn1fjy51000eg4o0xfwyxsjr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/25/readme/" data-id="cjnv8suh80009jgo0fv2blfq2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -479,7 +485,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>netstat -ano|findstr “8006”</p>
+        <p>###jetsen</p>
+<p>如何在项目中展示设计模式、灵活应用spring相关技术，体现出高并发、多线程技能， 展示出JVM调优的功底，学习能力通过哪些方面来实现如果学习新技术springcloud/redis/rabbitMQ/zookeeper/eureka/mysql/oracle/mybatis/tomcat/nginx/IO。项目中哪些模块应用了哪些技术。业务能力的功底如何通过系统项目来描述。面试题中的解决应用到项目描述中。项目有个大体的介绍，运用了哪些技术及框架，完成一个什么样的功能，个人负责哪些模块，项目中遇到过什么问题如何解决的。为什么这样去架构和技术选型、公司产品的整体架构体系划分：业务平台、工作流、媒体传输平台（调度、执行器），业务平台做了优化简化了项目流程的开发。前后台分离，后台采用Spring技术，前台整合优化了jquery。普通的增删改查的操作通过前台拼装SQL用XML格式发送到后台，后台鉴权处理后解析SQL做入库操作。前台虽然用html浏览器解析不需要后台，看似前后端分离，前端解析后台的XML进行页面的渲染。可通过webservices、http两种方式向后台请求数据。<br>webservice是CXF来实现的。<br>公司产品：转码、迁移、MD5等执行器(C++)、工作流(java)、LDAP、AD、OD（目录权限的管理）、jws(存储统计)、浏览器java<br>插件（IE）<br>后端框架、前端框架。项目的部署在央视是WebSphere做的负载均衡，数据库Oracle。查找相关技术及项目描述的文档并进行<br>整理<br>先从公司后端框架入手，了解Spring及用户权限</p>
+<p>频道包装系统<br>1.参与系统及业务设计</p>
+<ol>
+<li>负责系统的业务主要实现，包装任务的创建、包装变更的查看、包装的制作与审核、模板的创建于绑定与迁移、包装信息的发布及应急，处理了复杂变更信息。</li>
+<li>负责频道包装系统中接口交互模块的编码设计实现，实现接口与业务操作的分离。接口部分的功能负责接收数据并存储日志，然后转发给业务系统，业务系统进行相关业务操作。接口包括了频道、栏目、全台用户、sch04播出编排单、sch05播出变更单、sch16播出执行单，该部分的运用的开源ESB MULE实现，实现的功能是接收单据后记录交互日志，再调用业务系统对应的业务接口。实现了接口修改而不影响业务的操作。实现了MULE基于WS的部署，接口代理转发。<br>1.完成系统与下级机及上级机的交互模块。通过socket编码实现，由于下级机要每间隔5s获取业务系统的状态及日常包装单的版本，则把包装的版本信息放到内存中来维护（根据数据库），每当数据库更新就会更新内存，内存中就涉及了系统关闭内存消失的问题，所以每次程序启动就需要把所有频道的近三天的包装单版本加到内存中，还增加了定时器quartz，定时清理非近三天的包装的信息，定时向内存中添加近三天的频道包装版本信息。socket消息为消息头+消息体组成，消息头是4个字节的表示的消息体长度。系统中的模板迁移审核通过工作流实现，实现了业务状态的监控。</li>
+<li>完成应急包装业务（编单、审核、发布，迁移，同步）</li>
+<li>通过JMTC21进行文件迁移<br>包装生产管理系统<br>直播星发布系统<br>移动管控系统<br>云制作管理系统<br>1 参与系统及业务设计<br>2 负责设备出入库业务的设计实现                                                                                                                                                                            3 指导相关研发任务的工作<br>内容发布系统</li>
+</ol>
+<h3 id="frame"><a href="#frame" class="headerlink" title="frame"></a>frame</h3><p>neethi-3.03<br>jackson</p>
+<hr>
+<p>netstat -ano|findstr “8006”</p>
 <p>exp pk2admin/password@orcl owner=pk2admin file=C:\Users\lenovo\Desktop\ppn_data2.dmp<br>imp test/password@orcl full=y file=C:\Users\lenovo\Desktop\ppn_data2.dmp</p>
 <p>6222600910073994731</p>
 <p>wspath<br>/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/server1<br>/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/installedApps/UE2-T-AppCell01</p>
@@ -512,9 +529,8 @@
 <p>tasklist /fi “pid eq 6544”</p>
 <p>tasklist /fi “imagename eq firefox.exe”</p>
 <h2 id="taskkill"><a href="#taskkill" class="headerlink" title="taskkill"></a>taskkill</h2><p>taskkill /pid 15900<br>taskkill /fi “pid eq 15900”</p>
-<p>##WHERE Locate and display files in a directory tree.<br>where /t cas*.log</p>
-<hr>
-<p>1.su oracle </p>
+<p>##WHERE Locate and display files in a directory tree. </p>
+<h2 id="where-t-cas-log"><a href="#where-t-cas-log" class="headerlink" title="where /t cas*.log"></a>where /t cas*.log</h2><p>1.su oracle </p>
 <p>然后启动监听器</p>
 <p>1.lsnrctl start<br>会看到启动成功的界面;</p>
 <p>1.lsnrctl stop<br>停止监听器命令.</p>
@@ -542,7 +558,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/21/often/" data-id="cjn1fjy4o0007g4o0j4hdyhan" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/21/often/" data-id="cjnv8suhe000ejgo0sgc5hf9q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -590,7 +606,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/24/job-skills/" data-id="cjn1fjy3s0005g4o0h2j0fknw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/24/job-skills/" data-id="cjnv8suh50007jgo0ysr7ypgf" class="article-share-link">Share</a>
       
       
     </footer>
